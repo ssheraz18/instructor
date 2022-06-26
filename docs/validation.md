@@ -2,12 +2,14 @@
 
 Validation is crucial when using Large Language Models (LLMs) for data extraction. It ensures data integrity, enables reasking for better results, and allows for overwriting incorrect values. Pydantic offers versatile validation capabilities suitable for use with LLM outputs.
 
-## Validation Features in Pydantic
 
-Pydantic supports:
+!!! note "Pydantic Validation Docs"
+    Pydantic supports validation individual fields or the whole model dict all at once.
 
-- [Field-Level Validation](https://docs.pydantic.dev/latest/usage/validators/)
-- [Model-Level Validation](https://docs.pydantic.dev/latest/usage/validators/#model-validators)
+    - [Field-Level Validation](https://docs.pydantic.dev/latest/usage/validators/)
+    - [Model-Level Validation](https://docs.pydantic.dev/latest/usage/validators/#model-validators)
+
+    To see the most up to date examples check out our repo [jxnl/instructor/examples/validators](https://github.com/jxnl/instructor/tree/main/examples/validators)
 
 ## Importance of LLM Validation
 
@@ -135,8 +137,6 @@ def llm_validator(
             model=model,
             temperature=temperature,
         )  # type: ignore
-
-        print(resp.model_dump_json(indent=2))
 
         # If the response is  not valid, return the reason, this could be used in
         # the future to generate a better response, via reasking mechanism.
